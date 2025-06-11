@@ -47,3 +47,41 @@ return MaterialApp(
     ),
 );
 ```
+#### ScaffoldとAppBar
+上部にアプリケーションバー、その下にテキストを表示する  
+Scaffold　土台　AppBar　アプリケーションバー
+```
+home: Scaffold(
+        appBar: AppBar(title: Text('Hello Flutter!')),
+        body: Text('Hello Flutter World!!', style: TextStyle(fontSize: 32.0)),
+      ),
+    );
+```
+#### StatefulWidgetクラス
+動的、操作して表示が変わる  
+状態を扱うためのStateクラスを持つ  
+ステートが更新されるたびにbuildが呼び出される
+```
+
+  void _setMessage() {
+    setState(() {
+      _message = 'タップしました！';
+    });
+  }
+```
+setState ステートの更新をステートクラスに知らせる  
+```
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text(widget.title)),
+      body: Text(_message, style: TextStyle(fontSize: 32.0)),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _setMessage,
+        tooltip: 'set message.',
+        child: Icon(Icons.star),
+      ),
+    );
+  }
+```
+ボタンが押されたらメッセージを更新、更新されたステートにしたがってアプリバーのテキストも更新される
