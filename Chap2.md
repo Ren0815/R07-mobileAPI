@@ -1,19 +1,5 @@
 # Flutterの授業で学んだことまとめ
-## git
-#### ファイルのアップロード
-ソース管理→変更をステージ  
-コメントを書きコミット  
-ここまででローカルに保存  
-ソース管理の右にある三点リーダーをクリックし、プッシュを選択することでアップロード完了  
-**後からコミットに戻ることもできるのでコミット時のコメントは分かりやすく！**
-
-## VScodeによる開発
-コマンドパレットに'>Flutter: New Project'  
-'Applification'を選択  
-保存場所を選択  
-プロジェクト名を入力
-
-## プログラム
+## プログラムの基本
 #### アプリ実行
 ```
 void main(){
@@ -85,3 +71,42 @@ setState ステートの更新をステートクラスに知らせる
   }
 ```
 ボタンが押されたらメッセージを更新、更新されたステートにしたがってアプリバーのテキストも更新される
+
+#### 複雑なクラス
+Dataクラス
+```
+class Data{
+  int_price;
+  String_name;
+
+  Data(this.name, this.price): super();
+  @override
+  String toString(){
+    return _name + ':' + _price.toString() + '円';
+  }
+}
+```
+引数で受け取った値のnameとpriceを文字型にして出力
+
+Dataインスタンス
+```
+static final _data = [
+  Data('Apple',200),
+  Data('Orange',150),
+  Data('Peach',300)
+];
+Data _item;
+```
+呼び出されるデータのリストの用意
+リストの最初の項目に_itemを設定することで起動時に最初のDataが表示される
+
+_setData
+```
+void_setData(){
+  setState((){
+    _item = (_data..shuffle()).first;
+  });
+}
+```
+shuffleでリストの順番をランダムに入れ替え
+#### デフォルトのmain.dart
